@@ -1,5 +1,5 @@
 from django.db import models
-
+from PIL import *
 
 class PixelCounter(models.Model):
     title = models.CharField(max_length=150)

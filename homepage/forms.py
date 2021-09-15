@@ -6,3 +6,4 @@ class ImageForm(forms.ModelForm):
     class Meta:
         model = PixelCounter
         fields = ('title', 'cover')
+

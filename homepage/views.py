@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.core.files.storage import FileSystemStorage
+from .models import PixelCounter
 from .forms import ImageForm
 
 def index(request):
@@ -8,7 +8,11 @@ def index(request):
         if form.is_valid():
             form.save()
             img_obj = form.instance
-            return render(request, 'homepage/index.html', {'form': form, 'img_obj': img_obj})
+            context = {
+                'form': form,
+                'img_obj': img_obj,
+            }
+            return render(request, 'homepage/index.html', context)
     else:
         form = ImageForm()
     return render(request, 'homepage/index.html', {'form': form})

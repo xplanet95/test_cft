@@ -1,10 +1,25 @@
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-   {{ form.as_p }}
-  <button type="submit">Загрузить</button>
-</form>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pixel counter</title>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+          <button type="submit">Загрузить</button>
+        </form>
 
-{% if img_obj %}
-  <h3>Загрузка прошла успешно: {{img_obj.title}}</h3>
-  <img src="{{ img_obj.coverurl}}" alt="connect" style="max-height:300px">
-{% endif %}
+        {% if img_obj %}
+          <h3>Загрузка прошла успешно: {{img_obj.title}}</h3>
+          <img src="{{ img_obj.cover.url}}" alt="connect" style="max-height:300px">
+        {% endif %}
+    <h1>{{b_w}}</h1>
+</head>
+<body>
+
+</body>
+</html>
+
