@@ -8,6 +8,7 @@ def index(request):
         if form.is_valid():
             form.save()
             img_obj = form.instance
+
             context = {
                 'form': form,
                 'img_obj': img_obj,
