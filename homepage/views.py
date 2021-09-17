@@ -8,10 +8,12 @@ def index(request):
         if form.is_valid():
             form.save()
             img_obj = form.instance
+            red = PixelCounter.black_or_white(self=img_obj)
 
             context = {
                 'form': form,
                 'img_obj': img_obj,
+                'red': red,
             }
             return render(request, 'homepage/index.html', context)
     else:
