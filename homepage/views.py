@@ -8,35 +8,21 @@ def index(request):
         if form.is_valid():
             form.save()
             img_obj = form.instance
-            red = PixelCounter.black_or_white(self=img_obj)
-
+            b_or_w = PixelCounter.black_or_white(self=img_obj)
+            users_text = form.cleaned_data['hex_code']
+            if PixelCounter.check_hex(users_text):
+                rgb = PixelCounter.hex_to_rgb(users_text)
+                h = PixelCounter.hex_counter(self=img_obj, rgb_code=rgb)
+            else:
+                h = '<Hex code отсутствует или неверен>'
             context = {
+                'h': h,
                 'form': form,
                 'img_obj': img_obj,
-                'red': red,
+                'b_or_w': b_or_w,
             }
             return render(request, 'homepage/index.html', context)
     else:
         form = ImageForm()
     return render(request, 'homepage/index.html', {'form': form})
-
-
-
-# def index(request):
-#     if request.method != 'POST' or not request.FILES:
-#         file = request.FILES['myfile1']
-#         fs = FileSystemStorage()
-#         filename = fs.save(file.name, file)
-#         file_url = fs.url(filename)
-#
-#         context = {
-#             'file_url': file_url,
-#         }
-#
-#         return render(request, 'home_page.html', context)
-#
-#
-#
-#     return render(request, 'homepage/index.html')
-    #render(request, 'homepage/index.html', context)
 

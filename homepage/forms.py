@@ -5,5 +5,5 @@ from .models import PixelCounter
 class ImageForm(forms.ModelForm):
     class Meta:
         model = PixelCounter
-        fields = ('cover',)
+        fields = ('title', 'hex_code', 'cover')
 
